@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <title>Dual HD - Horizontal and Vertical Live Video Simultaneously</title>
+    <meta name="description" content="Dual HD frame sizes for streaming horizontal and vertical video in a single stream. Frame size specification, image templates, OBS setup and FFmpeg example.">
     <link rel="stylesheet" href="css/pico.min.css">
     <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/img/favicon.svg" />
@@ -34,48 +35,57 @@
         <svg width="44" height="44" style="margin-right: 10px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve" fill="#000000" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g display="none"> <path display="inline" opacity="0.2" enable-background="new" d="M0,0v52h52V0H0z M49.9,49.9H2.1V2.1h47.8 C49.9,2.1,49.9,49.9,49.9,49.9z"></path> </g> <g display="none"> <rect x="2" y="2" display="inline" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="48" height="48"></rect> </g> <g display="none"> <g display="inline" opacity="0.5"> <line fill="none" stroke-width="0.25" stroke-miterlimit="10" x1="50" y1="2" x2="2" y2="50"></line> <line fill="none" stroke-width="0.25" stroke-miterlimit="10" x1="2" y1="2" x2="49.9" y2="50"></line> <rect x="2" y="2" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="2" height="48"></rect> <rect x="4" y="2" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="2" height="48"></rect> <rect x="6" y="2" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="2" height="48"></rect> <rect x="8" y="2" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="2" height="48"></rect> <rect x="10" y="2" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="2" height="48"></rect> <rect x="12" y="2" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="2" height="48"></rect> <rect x="14" y="2" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="2" height="48"></rect> <rect x="16" y="2" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="2" height="48"></rect> <rect x="18" y="2" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="2" height="48"></rect> <rect x="20" y="2" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="2" height="48"></rect> <rect x="22" y="2" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="2" height="48"></rect> <rect x="24" y="2" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="2" height="48"></rect> <rect x="26" y="2" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="2" height="48"></rect> <rect x="28" y="2" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="2" height="48"></rect> <rect x="30" y="2" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="2" height="48"></rect> <rect x="32" y="2" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="2" height="48"></rect> <rect x="34" y="2" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="2" height="48"></rect> <rect x="36" y="2" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="2" height="48"></rect> <rect x="38" y="2" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="2" height="48"></rect> <rect x="40" y="2" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="2" height="48"></rect> <rect x="42" y="2" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="2" height="48"></rect> <rect x="44" y="2" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="2" height="48"></rect> <rect x="46" y="2" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="2" height="48"></rect> <rect x="48" y="2" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="2" height="48"></rect> <rect x="2" y="48" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="48" height="2"></rect> <rect x="2" y="46" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="48" height="2"></rect> <rect x="2" y="44" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="48" height="2"></rect> <rect x="2" y="42" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="48" height="2"></rect> <rect x="2" y="40" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="48" height="2"></rect> <rect x="2" y="38" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="48" height="2"></rect> <rect x="2" y="36" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="48" height="2"></rect> <rect x="2" y="34" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="48" height="2"></rect> <rect x="2" y="32" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="48" height="2"></rect> <rect x="2" y="30" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="48" height="2"></rect> <rect x="2" y="28" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="48" height="2"></rect> <rect x="2" y="26" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="48" height="2"></rect> <rect x="2" y="24" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="48" height="2"></rect> <rect x="2" y="22" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="48" height="2"></rect> <rect x="2" y="20" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="48" height="2"></rect> <rect x="2" y="18" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="48" height="2"></rect> <rect x="2" y="16" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="48" height="2"></rect> <rect x="2" y="14" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="48" height="2"></rect> <rect x="2" y="12" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="48" height="2"></rect> <rect x="2" y="10" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="48" height="2"></rect> <rect x="2" y="8" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="48" height="2"></rect> <rect x="2" y="6" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="48" height="2"></rect> <rect x="2" y="4" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="48" height="2"></rect> <rect x="2" y="2" fill="none" stroke-width="0.25" stroke-miterlimit="10" width="48" height="2"></rect> </g> </g> <path d="M50,20.5c0-1.2-1-2.2-2.2-2.2H33.7c-1.2,0-2.2,1-2.2,2.2v23.7c0,1.2,1,2.2,2.2,2.2h14.1c1.2,0,2.2-1,2.2-2.2 V20.5z"></path> <g> <path d="M27.7,29.4H8.4c-0.7,0-1.3-0.7-1.3-1.3V11.9c0-0.7,0.7-1.3,1.3-1.3h28.1c0.7,0,1.3,0.7,1.3,1.3v2.5h5.1V9 c0-1.8-1.6-3.4-3.4-3.4H5.4C3.6,5.6,2,7.2,2,9v22.2c0,1.8,1.6,3.4,3.4,3.4h22.3V29.4z"></path> <path d="M27.7,44.2v-3h-1.9c-0.5,0-0.9-0.4-0.9-0.9v-1.7c0-0.5-0.4-0.9-0.9-0.9h-3.4c-0.5,0-0.9,0.4-0.9,0.9v1.7 c0,0.5-0.4,0.9-0.9,0.9h-2.6c-1.8,0-3.4,1.6-3.4,3.4V45c0,0.7,0.7,1.3,1.3,1.3h14.1C27.8,45.7,27.7,45,27.7,44.2z"></path> </g> <circle cx="40.8" cy="43.8" r="1.6"></circle> <path d="M46.7,40.2c0,0.4-0.4,0.9-0.9,0.9H35.6c-0.4,0-0.9-0.4-0.9-0.9V23.5c0-0.4,0.4-0.9,0.9-0.9h10.2 c0.4,0,0.9,0.4,0.9,0.9V40.2z"></path> </g></svg>
         Dual HD
       </h1>
-      <h2>Dual Format Streaming: Simultaneous Horizontal and Vertical Live Video</h2>
+      <h2>Dual format streaming: horizontal and vertical live video in one stream</h2>
 
       <div class="grid">
         <div>
             <p>
-                Dual format streaming is a method for broadcasting horizontal and vertical video at the same time.
-                The Dual HD specification provides frame sizes that make this straightforward, so creators and broadcasters can deliver
-                content to platforms with different orientation needs in a single stream. For example, horizontal video works
-                best for Twitch and YouTube, while vertical video suits TikTok and Instagram. Dual format streaming is a fundamental shift
-                for platforms that need both: a horizontal player on desktop and a vertical player on mobile.
+                Dual format streaming sends horizontal and vertical video at the same time.
+                Dual HD defines frame sizes that place both videos side by side in one frame: horizontal on the left,
+                vertical on the right. The encoder sends one stream, and a server crops it into two outputs.
+                Horizontal video suits platforms such as Twitch and YouTube. Vertical video suits TikTok and Instagram.
+                A platform with both a desktop player and a mobile player can show each viewer the right orientation.
             </p>
-            <h2>For Viewers</h2>
+            <h2>For viewers</h2>
             <p>
-                Dual format streaming improves the viewing experience across devices by matching the video orientation to the screen.
-                It removes the letterboxing that happens when horizontal video is shown on a vertical display, or the other way around.
+                The video matches the screen orientation. There is no letterboxing from showing horizontal video
+                on a vertical screen, or the other way around.
             </p>
-            <h2>For Streamers and Broadcasters</h2>
+            <h2>For streamers and broadcasters</h2>
             <p>
-                Dual HD is straightforward to use and does not require new broadcasting software. An intermediate server handles
-                the cropping and forwarding of streams to each destination, so both orientations are delivered correctly.
-                Any software that supports custom frame sizes, such as OBS Studio, can be used with Dual HD.
+                Dual HD works with existing broadcasting software. Any encoder that supports a custom canvas size,
+                such as OBS Studio, can produce a Dual HD stream. A server between the encoder and the platforms
+                crops the frame and forwards each video to its destination.
             </p>
-            <h2>Scope of This Standard</h2>
+            <h2>Scope</h2>
             <p>
-                Dual HD defines frame sizes only. It does not set limitations for codecs or other technical details. Modern codecs
-                like HEVC or AV1 are recommended for efficiency, since the combined frame size is larger.
-                To use Dual HD in practice, a transcoding service is needed to crop and forward the stream to each platform.
-                A reference server implementation is available on <a href="https://github.com/dualhd/server-demo" target="_blank">GitHub</a>.
+                Dual HD defines frame sizes and video positions only. It does not specify codecs, bitrates or other
+                encoding settings. The frame is larger than a single video, so an efficient codec such as HEVC or AV1
+                is recommended. A reference server implementation is available on
+                <a href="https://github.com/dualhd/server-demo" target="_blank">GitHub</a>.
             </p>
         </div>
         <article><img src="img/dualhd2640-example.png" alt="Dual HD example"></article>
       </div>
 
-      <h3>Specification v 1.0</h3>
+      <h3>Specification v1.1</h3>
       <article>
         <small>
-           <a href="DualHD-specification-v1.pdf" target="_blank">Dual HD Frame size specification v1.0 PDF</a>
+           <a href="Dual-HD-specification-v1.1.pdf" target="_blank">Dual HD frame size specification v1.1 (PDF)</a>
         </small>
       </article>
 
       <h3>Frame sizes and image templates</h3>
       <article>
+        <p>
+          <small>
+            In every frame size, the horizontal video is at the top-left corner (0, 0) and the vertical video is
+            directly to its right, aligned to the top. The frame width is the sum of both video widths, and the
+            frame height is the height of the taller video. The remaining area is unused.
+            Each frame size is named after its frame width.
+          </small>
+        </p>
+        <hr />
 
         <details name="framesizes">
           <summary>Dual HD 1760</summary>
@@ -202,11 +212,42 @@
         <hr />
 
         <details name="framesizes">
+          <summary>Dual HD 3640</summary>
+          <small>
+            <div class="grid">
+              <div>
+                <p>Video formats: 1440p (2K) horizontal, 1080p vertical.</p>
+                <ul>
+                  <li>Frame size (w, h): 3640x1920</li>
+                  <li>Horizontal video
+                    <ul>
+                      <li>Size (w, h): 2560x1440</li>
+                      <li>Position (x, y): 0, 0</li>
+                    </ul>
+                  </li>
+                  <li>Vertical video
+                    <ul>
+                      <li>Size (w, h): 1080x1920</li>
+                      <li>Position (x, y): 2560, 0</li>
+                    </ul>
+                  </li>
+                </ul>
+                <a href="img/DualHD-3640.png" target="_blank">Download template</a>
+              </div>
+              <div>
+                <img src="img/DualHD-3640.png" alt="Dual HD 3640 template" />
+              </div>
+            </div>
+          </small>
+        </details>
+        <hr />
+
+        <details name="framesizes">
           <summary>Dual HD 4920</summary>
           <small>
             <div class="grid">
               <div>
-                <p>Video formats: 4k horizontal, 1080p vertical.</p>
+                <p>Video formats: 2160p (4K) horizontal, 1080p vertical.</p>
                 <ul>
                   <li>Frame size (w, h): 4920x2160</li>
                   <li>Horizontal video
@@ -233,64 +274,74 @@
 
       </article>
 
-      <h3>Broadcasting configuration example</h3>
+      <h3>Encoder setup example</h3>
       <article>
-        <h5>OBS with Dual HD 2640</h5>
-        <small>1. Adjust OBS Settings
+        <h5>OBS Studio with Dual HD 2640</h5>
+        <small>
+          <p>1. Set the canvas and output size:</p>
           <ul>
-            <li>Video -> Base (Canvas) Resolution: <b>2640x1280</b></li>
-            <li>Video -> Output (Scaled) Resolution: <b>2640x1280</b></li>
-            <li>Output -> Rescale output: <b>Disabled</b></li>
+            <li>Settings &rarr; Video &rarr; Base (Canvas) Resolution: <b>2640x1280</b></li>
+            <li>Settings &rarr; Video &rarr; Output (Scaled) Resolution: <b>2640x1280</b></li>
+            <li>Settings &rarr; Output &rarr; Rescale Output: <b>disabled</b></li>
           </ul>
-
           <p>
-            2. Add an <b>Image</b> source to your OBS canvas with the <a href="img/DualHD-2640.png" target="_blank">Dual HD 2640 template</a>.
-            Build your horizontal and vertical layouts directly on top of this template.
+            2. Add an <b>Image</b> source with the <a href="img/DualHD-2640.png" target="_blank">Dual HD 2640 template</a>.
+            Use it as a guide to build the horizontal and vertical layouts, and hide it before going live.
           </p>
           <p>
-            If your computer's processing power or bandwidth isn't sufficient for streaming at 2640x1280,
-            select a smaller Dual HD resolution or downscale the output, provided the receiving service supports scaled Dual HD.
-            For ecample, scaled resolution can be 1848x896, which retains 70% of the original width and height.
+            If your hardware or upload bandwidth cannot handle 2640x1280, use a smaller Dual HD frame size.
+            Alternatively, set Output (Scaled) Resolution to a uniformly scaled size, such as 1848x896
+            (70% of the width and height). Use a scaled output only if the receiving service supports scaled Dual HD.
           </p>
         </small>
       </article>
 
-      <h3>Paltform support</h3>
+      <h3>Platform support</h3>
       <article>
         <p>
-            <a href="https://streamrun.com/">Streamrun</a> supports Dual HD for production use, making it possible to multistream in both landscape and portrait formats at the same time. With Dual Format Streaming, creators can reach a wider audience without compromising viewer experience.
+            <a href="https://streamrun.com/">Streamrun</a> supports Dual HD in production. It multistreams the horizontal
+            and vertical video to different platforms at the same time.
             <br />
-            <small>&#187; For more information, visit the Streamrun help center article on <a href="https://streamrun.com/docs/dual-format-streaming" target="_blank">Dual Format Streaming</a>.</small>
+            <small>&#187; Streamrun help center: <a href="https://streamrun.com/docs/dual-format-streaming" target="_blank">Dual Format Streaming</a></small>
         </p>
 
-        <span>
-            <a href="https://www.twitch.tv/">Twitch</a> is testing Dual Format Streaming in a limited Technical Alpha with a group of streamers
-            broadcasting in both horizontal and vertical formats at the same time,
-            giving viewers an optimized experience on web and mobile.<br />
-            <small>&#187; For more information, visit the Twitch help center article on <a href="https://help.twitch.tv/s/article/dual-format-vertical-video" target="_blank">Dual Format Streaming</a>.</small>
+        <p>
+            Dual format streaming is generally available on <a href="https://www.twitch.tv/">Twitch</a>.
+            Streamers can broadcast horizontal and vertical video at the same time, and viewers get the matching
+            orientation on web and mobile.
+            <br />
+            <small>&#187; Twitch help center: <a href="https://help.twitch.tv/s/article/dual-format-vertical-video" target="_blank">Dual Format Streaming</a></small>
+        </p>
+
+        <p>
+            <a href="https://www.youtube.com/">YouTube</a> supports dual streams with two separate stream keys:
+            one for the horizontal video and one for the vertical video. With Dual HD, the server crops the frame
+            and sends each video to its own stream key.
+            <br />
+            <small>&#187; Streamrun help center: <a href="https://streamrun.com/docs/youtube-dual-stream" target="_blank">YouTube Dual Stream</a></small>
         </p>
 
       </article>
 
-      <h3>Example of Dual HD video processing</h3>
+      <h3>Processing example</h3>
       <article>
-        <h5>Transcoding with FFmpeg</h5>
+        <h5>Splitting with FFmpeg</h5>
         <small>
-          <p>Dual HD 2640 video can be split into two destinations with the following command:</p>
+          <p>Split a Dual HD 2640 file into a horizontal and a vertical output. Audio is copied to both outputs.</p>
         </small>
         <pre>
 ffmpeg -i dualhd2640.mp4 \
   -filter_complex "[0:v]crop=1920:1080:0:0[horizontal]; [0:v]crop=720:1280:1920:0[vertical]" \
-  -map "[horizontal]" -c:v libx264 -preset veryfast -c:a copy fullhd_horizontal_output.mp4 \
-  -map "[vertical]" -c:v libx264 -preset veryfast -c:a copy 720p_vertical_output.mp4
+  -map "[horizontal]" -map "0:a?" -c:v libx264 -preset veryfast -c:a copy horizontal_1080p.mp4 \
+  -map "[vertical]" -map "0:a?" -c:v libx264 -preset veryfast -c:a copy vertical_720p.mp4
         </pre>
-        <p>See example implementation of a Dual HD server on <a href="https://github.com/dualhd/server-demo" target="_blank">GitHub</a>.</p>
+        <p>For live streams, see the reference server implementation on <a href="https://github.com/dualhd/server-demo" target="_blank">GitHub</a>.</p>
       </article>
 
       <h3>Dual HD buttons</h3>
       <article>
         <small>
-          <p>Download buttons and link back to <a href="https://dualhd.org/" target="_blank">dualhd.org</a> to support us - thank you!</p>
+          <p>Use these buttons to link to <a href="https://dualhd.org/" target="_blank">dualhd.org</a> and support the project. Thank you!</p>
           <img src="img/DualHD-button-black.png" alt="Dual HD button - black" width="200" style="margin: 0 20px 20px 0;" />
           <img src="img/DualHD-button-blue.png" alt="Dual HD button - blue" width="200" style="margin: 0 0 20px 0;" />
         </small>
